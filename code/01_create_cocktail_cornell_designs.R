@@ -2,6 +2,8 @@ library(opdesmixr)
 library(tidyverse)
 library(here)
 
+# To ensure exact reproducibility, make sure to install the same version of the opdesmixr package that was used to run this code and get the results of the paper:
+# devtools::install_github("mariobecerra/opdesmixr", ref = "777e67ffdd406c3b7a21952313e9aeb815cb4174")
 
 designs_folder = here("out/cocktail_cornell_designs/")
 dir.create(designs_folder, showWarnings = F)
