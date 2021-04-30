@@ -192,11 +192,6 @@ out_folder = here("out/cocktail_cornell_plots_and_tables/")
 dir.create(out_folder, showWarnings = F)
 
 
-# Folder with the designs by Ruseckaite
-ruseckaite_designs_folder = here("data/")
-
-
-
 
 
 
@@ -247,7 +242,9 @@ cocktail_i_opt_filename = paste0(designs_folder, "cocktail_i_optimal.rds")
 cocktail_D_opt = readRDS(cocktail_d_opt_filename)
 cocktail_I_opt = readRDS(cocktail_i_opt_filename)
 
-ruseckaite_cocktail_designs = read_csv(paste0(ruseckaite_designs_folder, "/ruseckaite_cocktail_designs.csv"))
+# opdesmixr package must be installed for this to work
+ruseckaite_cocktail_designs = read_csv(system.file("extdata", "ruseckaite_cocktail_designs.csv", package = "opdesmixr", mustWork = T))
+
 
 ruseckaite_cocktail_beta0_design = mnl_design_dataframe_to_array(
   ruseckaite_cocktail_designs %>%
@@ -511,7 +508,8 @@ ggplot2::ggsave(
 ############################################################################
 ############################################################################
 
-ruseckaite_cornell_designs = read_csv(paste0(ruseckaite_designs_folder, "/ruseckaite_cornell_designs.csv"))
+# opdesmixr package must be installed for this to work
+ruseckaite_cornell_designs = read_csv(system.file("extdata", "ruseckaite_cornell_designs.csv", package = "opdesmixr", mustWork = T))
 kappas = c(0.5, 5, 10, 30)
 
 beta_2 = c(0.86, 0.21, 0, 3.07, 2.34, 3.24, -20.59)

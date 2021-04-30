@@ -2,19 +2,11 @@ library(opdesmixr)
 library(tidyverse)
 library(here)
 
-# Assuming this sript is run before installing.
+
 designs_folder = here("out/cocktail_cornell_designs/")
 dir.create(designs_folder, showWarnings = F)
 
-
 n_cores = parallel::detectCores()
-
-
-
-
-
-
-
 
 
 ##########################################################################################
@@ -57,8 +49,7 @@ cocktail_i_opt_filename = paste0(designs_folder, "cocktail_i_optimal.rds")
 if(file.exists(cocktail_d_opt_filename)){
   cat("D_B optimal design already exists.\n")
 } else{
-  # 15 mins with 64 random starts and 4 cores
-  # 25 mins with 80 random starts and 4 cores
+  # 20 mins with 80 random starts and 4 cores
   cat("Doing D_B optimal design for cocktail experiment.\n")
   (t1D = Sys.time())
   cocktail_D_opt = mnl_mixture_coord_exch(
@@ -89,7 +80,7 @@ if(file.exists(cocktail_d_opt_filename)){
 if(file.exists(cocktail_i_opt_filename)){
   cat("I_B optimal design already exists.\n")
 } else{
-  # 20 mins with 64 random starts and 4 cores
+  # 25 mins with 80 random starts and 4 cores
   cat("Doing I_B optimal design for cocktail experiment.\n")
   (t1I = Sys.time())
   cocktail_I_opt =  mnl_mixture_coord_exch(
@@ -154,9 +145,19 @@ cornell_designs_basefilename_analytic_transf = paste0(designs_folder, "cornell_e
 (start_time = Sys.time())
 
 for(k in kappas){
-  # Each design takes around 53 and 87 seconds with 16 initial random designs, 128 halton draws, 10 max iterations and 4 cores.
-  # Each design takes around 99 and 160 seconds with 32 initial random designs, 128 halton draws, 10 max iterations and 4 cores.
-  # Each design takes around 13 and 20 minutes with 128 initial random designs, 128 halton draws, 20 max iterations and 4 cores.
+  # With 4 cores and 80 random starts it took 76 minutes in total. Breakdown:
+  #   For kappa = 0.5:
+  #           D-optimality took 397 seconds.
+  #           I-optimality took 729 seconds.
+  #   For kappa = 5:
+  #           D-optimality took 446 seconds.
+  #           I-optimality took 697 seconds.
+  #   For kappa = 10:
+  #           D-optimality took 448 seconds.
+  #           I-optimality took 650 seconds.
+  #   For kappa = 30:
+  #           D-optimality took 505 seconds.
+  #           I-optimality took 622 seconds.
 
   cat("kappa =", k, "\n")
 
@@ -164,7 +165,6 @@ for(k in kappas){
   Sigma_prime = transform_varcov_matrix(k*diag(7), 3)
 
   beta_2_prior_draws = get_correlated_halton_draws(beta_2_prime, Sigma_prime, n_draws_2)
-  # beta_2_prior_draws = get_halton_draws(beta_2, sd = sqrt(k), ndraws = n_draws_2)
 
   d_opt_filename_analytic_transf = paste0(cornell_designs_basefilename_analytic_transf, "_kappa", k, "_Dopt.rds")
 
