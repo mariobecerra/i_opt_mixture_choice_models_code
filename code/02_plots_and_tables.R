@@ -64,7 +64,7 @@ transform_tibble_from_pseudocomp_to_comp(mnl_design_array_to_dataframe(cocktail_
   select(4, 1:3, 5:7) %>%
   set_names(col_names_cocktail_table) %>%
   xtable::xtable(.,
-                 caption = "Bayesian D-optimal design for cocktail experiment",
+                 caption = "Bayesian D-optimal design for the cocktail experiment",
                  label = "tab:cocktail_exp_d_optimal_des") %>%
   print(., include.rownames = F, file = paste0(out_folder, "res_cocktail_table_d_opt_design.tex"))
 cat("Done\n\n")
@@ -76,7 +76,7 @@ transform_tibble_from_pseudocomp_to_comp(mnl_design_array_to_dataframe(cocktail_
   select(4, 1:3, 5:7) %>%
   set_names(col_names_cocktail_table) %>%
   xtable::xtable(.,
-                 caption = "Bayesian I-optimal design for cocktail experiment",
+                 caption = "Bayesian I-optimal design for the cocktail experiment",
                  label = "tab:cocktail_exp_i_optimal_des") %>%
   print(., include.rownames = F, file = paste0(out_folder, "res_cocktail_table_i_opt_design.tex"))
 cat("Done\n\n")
@@ -435,7 +435,7 @@ if(file.exists(cornell_analytic_transf_tables_filename)){
       set_names(col_names_cornell_analytic_transf_table) %>%
       xtable::xtable(
         .,
-        caption = paste0("Bayesian D-optimal design for artificial sweetener experiment, $\\kappa = ", kappa_i, "$"),
+        caption = paste0("Bayesian D-optimal design for the artificial sweetener experiment, when $\\kappa = ", kappa_i, "$"),
         label = paste0("tab:cornell_exp_d_optimal_des_kappa_", kappa_i)
       ) %>%
       print(.,
@@ -453,7 +453,7 @@ if(file.exists(cornell_analytic_transf_tables_filename)){
       set_names(col_names_cornell_analytic_transf_table) %>%
       xtable::xtable(
         .,
-        caption = paste0("Bayesian I-optimal design for artificial sweetener experiment, $\\kappa = ", kappa_i, "$"),
+        caption = paste0("Bayesian I-optimal design for the artificial sweetener experiment, when $\\kappa = ", kappa_i, "$"),
         label = paste0("tab:cornell_exp_i_optimal_des_kappa_", kappa_i)
       ) %>%
       print(.,
