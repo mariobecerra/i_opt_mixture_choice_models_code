@@ -1,4 +1,4 @@
-Code for (yet to be published) paper *Bayesian I-optimal designs for choice experiments with mixtures* by [Mario Becerra](http://mariobecerra.github.io/) and [Peter Goos](https://www.kuleuven.be/wieiswie/en/person/00006560).
+Code for paper *Bayesian I-optimal designs for choice experiments with mixtures* by [Mario Becerra](http://mariobecerra.github.io/) and [Peter Goos](https://www.kuleuven.be/wieiswie/en/person/00006560). Paper can be found on [Science Direct](https://www.sciencedirect.com/science/article/pii/S0169743921001635?via%3Dihub) (with paywall) or [Arxiv](https://arxiv.org/abs/2108.01748) (open access).
 
 R package [opdesmixr](https://github.com/mariobecerra/opdesmixr) must be installed to run the code. Further instructions will be added to this README in the near future.
 
